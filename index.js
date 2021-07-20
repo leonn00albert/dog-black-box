@@ -11,10 +11,9 @@ app.use(bodyParser.json());
 const mongoose = require("mongoose");
 
 mongoose.connect(
-  `mongodb+srv://leon:${process.env.MONGO_KEY}@cluster0.umurs.mongodb.net/dog-black-box?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true }
+  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_KEY}@${process.env.MONGO_URL}`, { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
-const auth = process.env.AUTH;
 
 app.use(locationRoutes)
 
