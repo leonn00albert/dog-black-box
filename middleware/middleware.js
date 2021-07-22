@@ -6,13 +6,11 @@ const middleware = {
             res.status(403).end()
         }
     },
-
     checkForJSON: function (req, res, next) {
-
         if (req.is('application/json') === 'application/json') {
             next()
         } else {
-            res.status(401).send('Content-Type must be application/json');
+            res.status(400).send('Content-Type must be application/json');
         }
     }
 }

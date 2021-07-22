@@ -13,7 +13,10 @@ Router.get('/location/:id', middleware.checkForAuth, async (req, res,) => {
 
 Router.post('/location', middleware.checkForJSON, middleware.checkForAuth, async (req, res,) => {
     const content = {
-        name: 'test'
+        coord: {
+            lon: '41.723463946359715',
+            lat: '44.75007159874287'
+          },
     }
     const location = new Location(content);
     location.save()
