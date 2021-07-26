@@ -1,8 +1,13 @@
+
+
 const middleware = {
     checkForAuth: function (req, res, next) {
-        if (req.headers.apptoken === process.env.AUTH) {
+        if (req.headers.apptoken === process.env.AUTH || req.cookies.auth === process.env.SECRETHASH) {
             next()
         } else {
+            if(req.originalUrl === '/dashboard'){
+                res.status(403).redirect('/login')
+            }
             res.status(403).end()
         }
     },
