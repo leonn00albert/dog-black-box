@@ -1,5 +1,7 @@
 // Include Nodejs' net module.
 const Net = require('net');
+const axios = require('axios');
+
 // The port on which the server is listening.
 const port = 8080;
 
@@ -23,7 +25,21 @@ server.on('connection', function(socket) {
 
     // The server can also receive data from the client by reading from its socket.
     socket.on('data', function(chunk) {
-        console.log(`Data received from client: ${chunk.toString()}`);
+        console.log(`Data received from client: ${chunk.toString()}`);  
+        axios.post('https://dog-black-box.herokuapp.com/location', {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+          },{
+            headers: { 'content-type': 'application/x-www-form-urlencoded',
+        "appToken": "094201303"
+            }
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     });
 
     // When the client requests to end the TCP connection with the server, the server
