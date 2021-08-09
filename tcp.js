@@ -30,7 +30,7 @@ server.on('connection', function(socket) {
             firstName: 'Fred',
             lastName: 'Flintstone'
           },{
-            headers: { 'content-type': 'application/x-www-form-urlencoded',
+            headers: { 'Content-Type': 'application/json',
         "appToken": "094201303"
             }
           })
